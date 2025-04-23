@@ -52,7 +52,7 @@ dependencies {
     // Custom items
 	// compileOnly 'com.github.oraxen:Oraxen:master-352207f7ec-1'
     // implementation 'com.github.oraxen:Oraxen:1.189.0' https://spigotmc.org/resources/72448/
-    compileOnly 'com.github.LoneDev6:api-itemsadder:3.0.0' // https://spigotmc.org/resources/73355/
+    // compileOnly 'com.github.LoneDev6:api-itemsadder:3.0.0' // https://spigotmc.org/resources/73355/
 
 	// Other plugins
 	compileOnly('net.essentialsx:EssentialsX:2.20.1') { transitive = false }
