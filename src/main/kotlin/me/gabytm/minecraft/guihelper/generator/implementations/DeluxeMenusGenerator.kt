@@ -27,7 +27,6 @@ import me.gabytm.minecraft.guihelper.config.SettingsBase
 import me.gabytm.minecraft.guihelper.functions.*
 import me.gabytm.minecraft.guihelper.generator.base.ConfigGenerator
 import me.gabytm.minecraft.guihelper.generator.base.GeneratorContext
-import me.gabytm.minecraft.guihelper.item.custom.providers.itemsadder.ItemsAdderItem
 import me.gabytm.minecraft.guihelper.item.heads.exceptions.HeadIdProviderNotSupportByPluginException
 import me.gabytm.minecraft.guihelper.item.heads.providers.HeadIdProvider.Provider
 import me.gabytm.minecraft.guihelper.util.Message
@@ -112,14 +111,6 @@ class DeluxeMenusGenerator(
     }
 
 	private fun checkForCustomItem(section: ConfigurationSection, input: CommandLine, item: ItemStack) {
-		val manager = plugin.itemsManager
-
-		val itemsAdderItem = manager.getCustomItem(ItemsAdderItem::class, item)
-
-		if (itemsAdderItem != null) {
-			section["material"] = "itemsadder-${itemsAdderItem.namespace}"
-			return
-		}
 
 		if (item.isPlayerHead) {
 			handlePlayerHeads(section, item, input.getHeadIdProvider(default = settings[Setting.SETTINGS__HEADS]))
@@ -157,6 +148,7 @@ class DeluxeMenusGenerator(
 			when (nbt.getType(key)) {
 				NBTType.NBTTagString -> strings.add("$key:${nbt.getString(key)}")
 				NBTType.NBTTagInt -> ints.add("$key:${nbt.getInteger(key)}")
+				else -> throw IllegalArgumentException("unexpected nbt type")
 			}
 		}
 

@@ -26,8 +26,6 @@ import me.gabytm.minecraft.guihelper.functions.*
 import me.gabytm.minecraft.guihelper.generator.base.ConfigGenerator
 import me.gabytm.minecraft.guihelper.generator.base.GeneratorContext
 import me.gabytm.minecraft.guihelper.item.custom.providers.headdatabase.HeadDatabaseItem
-import me.gabytm.minecraft.guihelper.item.custom.providers.itemsadder.ItemsAdderItem
-import me.gabytm.minecraft.guihelper.item.custom.providers.oraxen.OraxenItem
 import me.gabytm.minecraft.guihelper.item.heads.exceptions.HeadIdProviderNotSupportByPluginException
 import me.gabytm.minecraft.guihelper.item.heads.providers.HeadIdProvider.Provider
 import me.gabytm.minecraft.guihelper.util.Message
@@ -157,19 +155,6 @@ class ShopGuiPlusGenerator(
         if (headDatabaseItem != null) {
             section["headDatabase"] = headDatabaseItem.id
             return
-        }
-
-        val itemsAdderItem = manager.getCustomItem(ItemsAdderItem::class, item)
-
-        if (itemsAdderItem != null) {
-            section["itemsAdder"] = itemsAdderItem.id
-            return
-        }
-
-        val oraxenItem = manager.getCustomItem(OraxenItem::class, item)
-
-        if (oraxenItem != null) {
-            section["oraxen"] = oraxenItem.id
         }
     }
 
